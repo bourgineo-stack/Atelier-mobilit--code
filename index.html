@@ -488,6 +488,32 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
   <script>
+
+    // Codes d'accès valides (à mettre à jour après chaque atelier)
+    const VALID_ACCESS_CODES = ["DIJON2025"]; // Remplace par ton code actuel
+
+    /** * Vérifie si le code d'accès saisi est valide. */
+  function checkAccessCode() {
+    const input = document.getElementById("accessCodeInput");
+    const errorDiv = document.getElementById("accessError");
+    const code = input.value.trim();
+
+      if (VALID_ACCESS_CODES.includes(code)) {
+        // Code valide : cache le champ et affiche la suite
+        document.getElementById("accessCodeInput").style.display = "none";
+        document.querySelector("#step1 button[onclick='checkAccessCode()']").style.display = "none";
+        errorDiv.style.display = "none";
+
+        // Affiche la section pour entrer l'adresse
+        document.getElementById("locationSection").style.display = "block";
+      } else {
+        // Code invalide : affiche une erreur
+        errorDiv.style.display = "block";
+        input.value = ""; // Efface le champ
+        }
+    }
+    
+    
     // Fonction utilitaire pour sélectionner les éléments
     function $(id) {
       return document.getElementById(id);
@@ -498,6 +524,8 @@
       return Math.random().toString(36).substr(2, 15);
     }
 
+
+    
     let myCoords = null;
     let myCityName = '';
     let myFullAddress = '';
