@@ -485,6 +485,16 @@
       return Math.random().toString(36).substr(2, 15);
     }
 
+    //Ajout pour créer un code d'accès
+    // Code d'accès actuel (à changer manuellement après chaque atelier)
+    const CURRENT_ACCESS_CODE = "DIJON2025";
+
+    // URL de ton application (remplace par ton URL GitHub Pages)
+    const APP_URL = "https://bourgineo-stack.github.io/Atelier-mobilit--code/";
+
+    // Liste des codes d'accès valides (pour vérifier les QR codes scannés)
+    const VALID_ACCESS_CODES = [CURRENT_ACCESS_CODE];
+    
     let myCoords = null;
     let myCityName = '';
     let myFullAddress = '';
@@ -637,27 +647,54 @@
 
     // Génération QR code d'invitation
     function genInviteQRCode() {
-      const inviteQrcode = $('inviteQrcode');
+     const inviteQrcode = document.getElementById('inviteQrcode');
       if (!inviteQrcode) return;
-      
+
       inviteQrcode.innerHTML = '';
-      
-      // QR code pointant vers cette page
-      const currentUrl = window.location.href;
-      
-      try {
-        new QRCode(inviteQrcode, {
-          text: currentUrl,
-          width: 200,
-          height: 200,
-          colorDark: '#000000',
-          colorLight: '#ffffff',
-          correctLevel: QRCode.CorrectLevel.L
-        });
-      } catch (error) {
+
+      // Crée un objet avec l'URL et le code d'accès
+      const qrData = JSON.stringify({
+        url: window.location.href,  // URL de ton application
+        accessCode: CURRENT_ACCESS_CODE  // Code d'accès actuel
+      });
+
+      new QRCode(inviteQrcode, {
+        text: qrData,  // Utilise l'objet JSON comme données du QR code
+        width: 180,
+        height: 180,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.L
+      });
+    } catch (error) {
         console.error("Erreur génération QR code d'invitation:", error);
       }
     }
+
+    
+//    function genInviteQRCode() {
+  //    const inviteQrcode = $('inviteQrcode');
+    //  if (!inviteQrcode) return;
+      
+  //    inviteQrcode.innerHTML = '';
+      
+      // QR code pointant vers cette page
+    //  const currentUrl = window.location.href;
+      
+//      try {
+//        new QRCode(inviteQrcode, {
+//          text: currentUrl,
+//          width: 200,
+//          height: 200,
+//          colorDark: '#000000',
+//          colorLight: '#ffffff',
+//          correctLevel: QRCode.CorrectLevel.L
+//        });
+//      } catch (error) {
+//        console.error("Erreur génération QR code d'invitation:", error);
+//      }
+//    }
+    
 
     // Navigation entre étapes
     function showStep(stepNumber) {
