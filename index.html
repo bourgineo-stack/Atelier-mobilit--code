@@ -767,11 +767,11 @@
 
     // Initialiser le jeu
     function initGame() {
-      if (participants.length < MIN_PARTICIPANTS_REQUIRED) {
-        showError("Vous devez scanner au moins 5 personnes pour jouer !");
-        setTimeout(() => showStep(2), 2000);
-        return;
-      }
+    if (participants.length < MIN_PARTICIPANTS_REQUIRED) { // ✅ Utilise la variable
+      showError(`Vous devez scanner au moins ${MIN_PARTICIPANTS_REQUIRED} personne(s) pour jouer !`);
+      setTimeout(() => showStep(2), 2000);
+      return;
+    }
       
       gameTargets = participants.slice(0, 5);
       scannedTargets = [];
