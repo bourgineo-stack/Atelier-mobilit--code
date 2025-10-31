@@ -538,6 +538,7 @@
     let participants = [];
     let scanning = false;
     let animationFrameId = null;
+    let MIN_PARTICIPANTS_REQUIRED = 1;//nombre de participants mini à scanner
     
     // Variables du jeu
     let gameTargets = [];
@@ -751,7 +752,7 @@
 
     // Initialiser le jeu
     function initGame() {
-      if (participants.length < 5) {
+      if (participants.length < MIN_PARTICIPANTS_REQUIRED) {
         showError("Vous devez scanner au moins 5 personnes pour jouer !");
         setTimeout(() => showStep(2), 2000);
         return;
@@ -922,7 +923,7 @@
       }
       
       const goToStep3 = $('goToStep3');
-      if (goToStep3 && participants.length >= 5) {
+      if (goToStep3 && participants.length >= MIN_PARTICIPANTS_REQUIRED) {
         goToStep3.disabled = false;
       }
       
