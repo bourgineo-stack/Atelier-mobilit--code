@@ -663,6 +663,9 @@
 
     // Génération QR Code avec ID unique
     function genMyQRCode() {
+      console.log("myUniqueId:", myUniqueId); // Log pour vérifier
+      console.log("myCoords:", myCoords); // Log pour vérifier
+      
       const qrcodeElement = $('qrcode');
       if (!qrcodeElement) {
         showError('Élément QR code non trouvé');
@@ -735,15 +738,17 @@
       // Arrêter toutes les caméras
       stopAllCameras();
 
+      // Initialiser le jeu si on va à l'étape 3
+      if (stepNumber === 3) {
+        initGame();
+      }
+      
        // Génère le QR code dans la step2 et la step3
       if (stepNumber === 2 || stepNumber === 3) {
         genMyQRCode(); // Appelle la fonction pour générer le QR code
       }
       
-      // Initialiser le jeu si on va à l'étape 3
-      if (stepNumber === 3) {
-        initGame();
-      }
+      
     }
 
       
