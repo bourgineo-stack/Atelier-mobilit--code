@@ -436,8 +436,8 @@
       </div>
 
       <div class="navigation-buttons">
-        <button onclick="showStep(2)">⬅️ Retour aux rencontres</button>
-        <button onclick="resetGame()" id="resetGameBtn" style="background: #ff9800;">🔄 Recommencer le défi</button>
+        <button onclick="showStep(2)">⬅️ Retour</button>
+        <button onclick="resetGame()" id="resetGameBtn" style="background: #ff9800;">🔄 2nde Chance</button>
         <button class="simple-scan-btn" onclick="showSimpleScanMode()">🔍 Mode scan simple</button>
       </div>
     </div>
@@ -922,7 +922,7 @@
       }
       
       const goToStep3 = $('goToStep3');
-      if (goToStep3 && participants.length >= 1) {
+      if (goToStep3 && participants.length >= 5) {
         goToStep3.disabled = false;
       }
       
