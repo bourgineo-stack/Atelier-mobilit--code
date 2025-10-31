@@ -410,9 +410,9 @@
       </div>
       
        <!-- Nouveau conteneur pour les QR codes -->
-      <div class="qrcode-container">
+       <div class="qrcode-container">
         <p> C'est votre code. Trouvez les autres :</p>
-        <div id="qrcode"></div>
+        <div id="qrcodeStep3"></div> <!-- ← NOUVEL ID -->
       </div>
 
       <div class="game-stats">
@@ -745,9 +745,15 @@
       
        // Génère le QR code dans la step2 et la step3
       if (stepNumber === 2 || stepNumber === 3) {
-        genMyQRCode(); // Appelle la fonction pour générer le QR code
+      // Crée une copie du QR code de l'étape 2 vers l'étape 3
+      const qrcodeStep2 = document.getElementById('qrcode');
+      const qrcodeStep3 = document.getElementById('qrcodeStep3');
+      if (qrcodeStep2 && qrcodeStep3) {
+        qrcodeStep3.innerHTML = qrcodeStep2.innerHTML;
+      } else {
+        genMyQRCode(stepNumber === 2 ? 'qrcode' : 'qrcodeStep3');
       }
-      
+    }
       
     }
 
