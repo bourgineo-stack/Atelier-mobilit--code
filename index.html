@@ -360,7 +360,7 @@
       <h2>🎯 Un max de rencontres !</h2>
       <p>Scannez un maximum de personnes ! À chaque fois que vous trouvez quelqu'un proche de vous, une question à lui poser apparaît.</p>
       
-      <div class="qrcode-container" id="qrcodeContainer">
+      <div class="qrcode-container">
         <p> C'est votre code. Trouvez les autres :</p>
         <div id="qrcode"></div>
       </div>
@@ -410,7 +410,7 @@
       </div>
       
        <!-- Nouveau conteneur pour les QR codes -->
-      <div class="qrcode-container" id="qrcodeContainer">
+      <div class="qrcode-container">
         <p> C'est votre code. Trouvez les autres :</p>
         <div id="qrcode"></div>
       </div>
@@ -734,11 +734,15 @@
       
       // Arrêter toutes les caméras
       stopAllCameras();
+
+       // Génère le QR code dans la step2 et la step3
+      if (stepNumber === 2 || stepNumber === 3) {
+        genMyQRCode(); // Appelle la fonction pour générer le QR code
+      }
       
       // Initialiser le jeu si on va à l'étape 3
       if (stepNumber === 3) {
         initGame();
-        genMyQRCode(); // Appelle une nouvelle fonction pour générer le QR code
       }
     }
 
