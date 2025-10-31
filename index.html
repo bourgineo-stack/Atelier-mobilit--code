@@ -396,7 +396,7 @@
 
       <div class="navigation-buttons">
         <button onclick="showStep(1)">⬅️ Retour</button>
-        <button onclick="showStep(3)" id="goToStep3" disabled>🎮 Lancer le défi (Minimum: <span id="minParticipantsRequiredDisplay">1</span>, plus c'est mieuc)</button>
+        <button onclick="showStep(3)" id="goToStep3" disabled>🎮 Lancer le défi (Minimum: <span id="minParticipantsRequiredDisplay">1</span>, plus c'est mieux)</button>
       </div>
     </div>
 
@@ -496,6 +496,8 @@
 
     // Codes d'accès valides (à mettre à jour après chaque atelier)
     const VALID_ACCESS_CODES = ["25"]; // Remplace par ton code actuel
+    // liste des surnoms
+    const participantNicknames = ['🦸', '🐼', '🦁', '🐻', '🦊', '🐱', '🐶', '🐭', '🐹', '🐰'];
 
     /** * Vérifie si le code d'accès saisi est valide. */
   function checkAccessCode() {
@@ -538,7 +540,7 @@
     let participants = [];
     let scanning = false;
     let animationFrameId = null;
-    let MIN_PARTICIPANTS_REQUIRED = 5;//nombre de participants mini à scanner
+    let MIN_PARTICIPANTS_REQUIRED = 1;//nombre de participants mini à scanner
     document.getElementById('minParticipantsRequiredDisplay').textContent = MIN_PARTICIPANTS_REQUIRED;
     
     // Variables du jeu
@@ -797,8 +799,7 @@
         else if (index === 2) medal = '🥉 ';
         
         card.innerHTML = `
-          <strong>${medal}${target.cityName}</strong>
-          <span class="distance-badge">${target.distance.toFixed(1)} km</span>
+          <strong>${medal}${participantNicknames[index] || '🤖'} (${target.distance.toFixed(1)} km)</strong>
           <div style="clear:both;"></div>
           ${scannedTargets.includes(target.id) ? '<small style="color:#4CAF50">✅ Trouvé !</small>' : '<small style="color:#ffd700">🎯 À scanner</small>'}
         `;
