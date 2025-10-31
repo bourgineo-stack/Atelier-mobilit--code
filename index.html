@@ -360,9 +360,9 @@
       <h2>🎯 Un max de rencontres !</h2>
       <p>Scannez un maximum de personnes ! À chaque fois que vous trouvez quelqu'un proche de vous, une question à lui poser apparaît.</p>
       
-      <div class="qrcode-container" id="qrcodeContainer">
-        <p> C'est votre code. Trouvez les autres :</p>
-        <div id="qrcode"></div>
+      <div class="my-qrcode-container">
+      <p>Votre QR code (à partager) :</p>
+      <div id="myQRCodeDefi"></div> <!-- Conteneur pour le QR code du participant -->
       </div>
 
       <!-- Vue caméra centrale -->
@@ -402,15 +402,16 @@
 
     <!-- Étape 3 : Défi des voisins -->
     <div id="step3" class="step">
-      <h2>🎮 Défi des Voisins</h2>
+      <h2>🎮 Retrouvez vos voisins</h2>
       
       <div class="game-instructions">
         <p><strong>Objectif :</strong> Scanner 3 de vos 5 voisins les plus proches</p>
         <p><strong>Règles :</strong> 5 essais maximum - Moins d'erreurs = meilleur score !</p>
       </div>
  <!-- Nouveau conteneur pour les QR codes -->
-      <div class="qrcode-container" id="qrcodeContainer">
-        <div id="qrcode"></div>
+      <div class="qrcode-container">
+        <p>C'est votre code. Trouvez les autres :</p>
+        <div id="qrcode"></div> <!-- Même id que dans la step2 -->
       </div>
 
       <div class="game-stats">
@@ -736,9 +737,11 @@
       // Initialiser le jeu si on va à l'étape 3
       if (stepNumber === 3) {
         initGame();
+        genMyQRCode(); // Appelle une nouvelle fonction pour générer le QR code
       }
     }
 
+      
     // Page d'invitation
     function showInvitePage() {
       document.querySelectorAll('.step').forEach(step => {
