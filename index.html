@@ -396,7 +396,7 @@
 
       <div class="navigation-buttons">
         <button onclick="showStep(1)">⬅️ Retour</button>
-        <button onclick="showStep(3)" id="goToStep3" disabled>🎮 Lancer le défi voisins</button>
+        <button onclick="showStep(3)" id="goToStep3" disabled>🎮 Lancer le défi (Mini: <span id="minParticipantsRequiredDisplay">1</span>)</button>
       </div>
     </div>
 
@@ -539,6 +539,7 @@
     let scanning = false;
     let animationFrameId = null;
     let MIN_PARTICIPANTS_REQUIRED = 1;//nombre de participants mini à scanner
+    document.getElementById('minParticipantsRequiredDisplay').textContent = MIN_PARTICIPANTS_REQUIRED;
     
     // Variables du jeu
     let gameTargets = [];
