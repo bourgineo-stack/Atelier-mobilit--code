@@ -755,6 +755,9 @@
       }
     }
       
+    // Scroll vers le haut de la page
+    window.scrollTo(0, 0);
+      
     }
 
       
@@ -765,6 +768,9 @@
       });
       $('invitePage').classList.add('active');
       genInviteQRCode();
+
+      // Scroll vers le haut de la page
+      window.scrollTo(0, 0);
     }
 
     // Mode scan simple
@@ -774,6 +780,9 @@
       });
       $('simpleScanMode').classList.add('active');
       // On ne démarre pas automatiquement le scan, on attend que l'utilisateur clique
+
+      // Scroll vers le haut de la page
+      window.scrollTo(0, 0);
     }
 
     // Initialiser le jeu
