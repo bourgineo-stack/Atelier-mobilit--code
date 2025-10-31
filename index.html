@@ -726,8 +726,8 @@
       });
       
       // Afficher l'étape demandée
-      const stepElement = $(`step${stepNumber}`);
-      const dotElement = $(`step${stepNumber}Dot`);
+      const stepElement = document.getElementById(`step${stepNumber}`); // ou $(`step${stepNumber}`)
+      const dotElement = document.getElementById(`step${stepNumber}Dot`);
       
       if (stepElement) stepElement.classList.add('active');
       if (dotElement) dotElement.classList.add('active');
