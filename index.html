@@ -746,13 +746,15 @@
        // Génère le QR code dans la step2 et la step3
       if (stepNumber === 2 || stepNumber === 3) {
       // Crée une copie du QR code de l'étape 2 vers l'étape 3
-      const qrcodeStep2 = document.getElementById('qrcode');
-      const qrcodeStep3 = document.getElementById('qrcodeStep3');
-      if (qrcodeStep2 && qrcodeStep3) {
-        qrcodeStep3.innerHTML = qrcodeStep2.innerHTML;
-      } else {
-        genMyQRCode(stepNumber === 2 ? 'qrcode' : 'qrcodeStep3');
-      }
+      setTimeout(() => {
+        const qrcodeStep2 = document.getElementById('qrcode');
+        const qrcodeStep3 = document.getElementById('qrcodeStep3');
+        if (qrcodeStep2 && qrcodeStep3) {
+          qrcodeStep3.innerHTML = qrcodeStep2.innerHTML;
+        } else {
+          genMyQRCode(stepNumber === 2 ? 'qrcode' : 'qrcodeStep3');
+        }
+      },100);
     }
       
     // Scroll vers le haut de la page
